@@ -1,29 +1,25 @@
 [project]
-name = "vusto"
+name = "Vusto"
 version = "0.1.0"
-description = "A simple islamic app"
+description = "Zikr"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-    { name = "Flet developer", email = "you@example.com" }
+    { name = "Aminzoda Ahmadjon", email = "you@example.com" }
 ]
 dependencies = [
-    "flet>=1.0.5"
+    "flet>=1.1.2"
 ]
 
 [dependency-groups]
 dev = [
-    "flet-cli>=1.0.5",
-    "flet-desktop>=1.0.5",
-    "flet-web>=1.0.5",
-    # Integration testing with `flet test` / pytest. The `test` extra brings in
-    # pytest, pytest-asyncio and the screenshot-comparison dependencies.
-    "flet[test]>=1.0.5",
+    "flet-cli>=1.1.2",
+    "flet-web>=1.1.2",
+    "sahih_al_bukhari>=3.1.7"
 ]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-testpaths = ["tests"]
 pythonpath = ["src"]
 
 [tool.flet]
@@ -41,3 +37,8 @@ copyright = "Copyright (C) 2023-2026 by Flet"
 
 [tool.flet.app]
 path = "src"
+
+[tool.flet.splash]
+type = "color"
+background = "#0F5132"
+min_duration = 5.7
