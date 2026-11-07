@@ -1,32 +1,44 @@
+[project]
+name = "Vusto"
+version = "0.1.0"
+description = "Zikr"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Aminzoda Ahmadjon", email = "you@example.com" }
+]
+dependencies = [
+    "flet>=1.1.2"
+]
 
-name: Build Flet Android APK
+[dependency-groups]
+dev = [
+    "flet-cli>=1.1.2",
+    "flet-web>=1.1.2",
+    "sahih_al_bukhari>=3.1.7"
+]
 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["src"]
 
-jobs:
-  build-apk:
-    runs-on: ubuntu-latest
+[tool.flet]
+org = "com.mycompany"
+product = "vusto"
+company = "Flet"
+copyright = "Copyright (C) 2023-2026 by Flet"
 
-    steps:
-      - name: Get project
-        uses: actions/checkout@v6
+# src/assets/icon.png is the icon for every platform. Keep it transparent and
+# filling the whole canvas: web, Windows and Linux show it as-is, and Flet
+# shrinks it to the margin iOS, macOS and Android each mask away. This colour
+# is what sits behind it where transparency cannot survive - the iOS icon, the
+# macOS tile and the Android background layer. Defaults to white.
+# icon_background = "#ffffff"
 
-      - name: Build APK
-        id: build
-        uses: flet-dev/flet-build-action@v1
-        with:
-          target: apk
-          runner-python-version: "3.14"
-          bundled-python-version: "3.14"
-          build-number: ${{ github.run_number }}
+[tool.flet.app]
+path = "src"
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v7
-        with:
-          path: ${{ steps.build.outputs.archive-path }}
-          archive: false
-          if-no-files-found: error
+[tool.flet.splash]
+type = "color"
+background = "#0F5132"
+min_duration = 5.7
