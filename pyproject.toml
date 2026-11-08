@@ -1,7 +1,7 @@
 [project]
-name = "Vusto"
+name = "Calc"
 version = "0.1.0"
-description = "Zikr"
+description = "Calculator"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
@@ -14,8 +14,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "flet-cli>=1.1.2",
-    "flet-web>=1.1.2",
-    "sahih_al_bukhari>=3.1.7"
+    "flet-web>=1.1.2"
 ]
 
 [tool.pytest.ini_options]
